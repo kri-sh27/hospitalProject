@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-primary">
+    <!-- Navbar content -->
+
+    <a class="navbar-brand" style="font-size: 17px;" routerLink="/">HOSPITAL</a>
+
+    <a *ngIf="!login.isLoggedIn()" [routerLink]="'/login'" type="button" style="margin-left: 950px; font-size: 17px;"
+        class="btn btn-primary">Login</a>
+
+    <a *ngIf="!isLoggedIn" [routerLink]="'/signup'" type="button" style="margin-right: 20px; font-size: 17px;"
+        class="btn btn-primary">Register</a>
+<div class="form-group">
+    <a *ngIf="isLoggedIn && user" type="button" style="margin-left: 850px; font-size: 17px;" 
+        class="btn btn-primary">{{login.getUser().fullName}}</a></div>
+<div class="form-group">
+    <a (click)="logout()" [routerLink]="'/login'" *ngIf="isLoggedIn" type="button" style="margin-right: 20px; font-size: 17px;"
+        class="btn btn-primary">Logout</a>
+    </div>
+</nav>

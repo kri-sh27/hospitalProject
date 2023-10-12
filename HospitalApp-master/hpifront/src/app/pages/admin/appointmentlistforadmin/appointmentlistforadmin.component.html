@@ -1,0 +1,60 @@
+<!-- <p>appointmentlistforadmin works!</p> -->
+<div class=" container-fluid page">
+  <div class="col-md-10 offset-md-1">
+  <!-- <div class=" page__box p-3 mt-2">Dashboard</div> -->
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__ content-data postion-absolute text-center">
+      All Appointments listed here!
+
+    </div>
+    <div class="mt-5">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Patient name</th>
+            <th>Doctor Name</th>
+            <th>Date</th>
+            <th>Start time</th>
+            <th>End Time</th>
+            <th>Health issue</th>
+            <th>Prescription</th>
+            <th>Note</th>
+            <th>Charges</th>
+            <th>Status</th>
+            <th>Pay</th>
+            <!-- <th>Edit</th>
+          <th>Delete</th> -->
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let al of appointmentlist | paginate:{id:'listing_pagination',itemsPerPage:3,currentPage:page,totalItems:total}">
+            <td>{{al.id}}</td>
+            <td>{{al.patientname}}</td>
+            <td>{{al.nameOfDoctor}}</td>
+            <td>{{al.appointmentDate}}</td>
+            <td>{{al.appointmentStartTime}}</td>
+            <td>{{al.appointmentEndTime}}</td>
+            <td>{{al.healthIssue}}</td>
+            <td>{{al.prescription}}</td>
+            <td>{{al.note}}</td>
+            <td>{{al.charges | currency:'INR'}}</td>
+            <td *ngIf="al.status==false">Treatment in progress</td>
+            <td *ngIf="al.status==true">Payment Done / Discharged</td>
+            <td ><button *ngIf="al.status==false" [disabled]="(al.charges==0)"  class="btn btn-primary"
+                (click)="status(al.id, al.status=true)">pay</button></td> 
+                <!-- --<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+              (click)="edit(doctor)">Edit</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="deleteDoctor(doctor)">Delete</button></td> -->
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls id="listing_pagination"  (pageChange)="page=$event" >
+       
+        </pagination-controls>
+      <button [routerLink]="'/admin'" class="ml10" style="margin-left: 20px;" type="button"
+        class="btn btn-primary">Back</button>
+    </div>
+  </div>
+  </div>
+</div>

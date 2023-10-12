@@ -1,0 +1,57 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row " style="margin-top: 20px;">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container text-center">
+                            <img src="../../../assets/h.png" alt="" height="100px" width="100px">
+                        </div>
+
+                        <h3 class="text-center">
+                            Login Here
+                        </h3>
+                        <!-- {{loginData|json}} -->
+                        <form #myForm="ngForm" (ngSubmit)="formSubmit()">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Username</label>
+                                <input type="text" #username="ngModel" [(ngModel)]="loginData.username" name="email"
+                                    class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                    placeholder="Enter username" required>
+                                <div class="alert alert-danger" role="alert"
+                                    *ngIf="username.invalid && (username.dirty || username.touched)">
+                                    Valid username is a required field
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" #password="ngModel" [(ngModel)]="loginData.password"
+                                    name="password" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Password" required>
+
+                                <div class="alert alert-danger" role="alert"
+                                    *ngIf="password.invalid && (password.dirty || password.touched)">
+                                    Password is a required field
+                                </div>
+                            </div>
+
+                            <div class="container text-center" style="margin-top: 10px;">
+                                <button [disabled]="!myForm.form.valid" type="submit"
+                                    class="btn btn-primary">Login</button>
+                                <button class="ml10" style="margin-left: 20px;" type="button" class="btn btn-primary"
+                                    (click)="myForm.resetForm()">Reset</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

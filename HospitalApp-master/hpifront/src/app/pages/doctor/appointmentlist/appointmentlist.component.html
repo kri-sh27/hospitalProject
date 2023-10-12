@@ -1,0 +1,64 @@
+<!-- <p>appointmentlist works!</p> -->
+<!-- <div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row " style="margin-top: 20px;">
+        <div class="col-md-8 ml-md-auto">
+          <div class="card">
+            <div class="card-body"> -->
+<div class=" container-fluid page">
+  <!-- <div class=" page__box p-3 mt-2">Dashboard</div> -->
+  <!-- <div class="col-md-8 offset-md-3"> -->
+    <div class="page__content shadow p-3 position-relative">
+      <div class="page__ content-data postion-absolute text-center">
+        All Appointment
+      </div>
+      <div class="mt-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Appointment ID</th>
+              <th>Patient Name</th>
+              <th>Date</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Health Issue</th>
+              <th>Prescription</th>
+              <th>Note</th>
+              <!-- <th>status</th> -->
+              <th>Fees</th>
+
+              <!-- <th>Edit</th>
+          <th>Delete</th> -->
+            </tr>
+            <tr input type="text">
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr *ngFor="let apt of appointlist | paginate:{id:'listing_pagination',itemsPerPage:4,currentPage:page,totalItems:total}">
+              <ng-container *ngIf="apt.status==false">
+                <td>{{apt.id}}</td>
+                <td>{{apt.patientname}}</td>
+                <td>{{apt.appointmentDate }}</td>
+                <td>{{apt.appointmentStartTime}}</td>
+                <td>{{apt.appointmentEndTime}}</td>
+                <td>{{apt.healthIssue}}</td>
+                <td>{{apt.prescription}}</td>
+                <td>{{apt.note}}</td>
+                <td>{{apt.charges | currency:'INR'}}</td>
+                <!-- <td>{{apt.status}}</td> -->
+                <td><button class="btn btn-primary" [routerLink]="'/addprescription'"
+                    (click)="setAppointmentId(apt.id)">Add prescription and fees</button></td>
+                <!-- --<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+              (click)="edit(doctor)">Edit</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="deleteDoctor(doctor)">Delete</button></td> -->
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls id="listing_pagination"  (pageChange)="page=$event">
+        </pagination-controls>
+        <button [routerLink]="'/doctor-dashboard'" class="ml10" style="margin-left: 20px;" type="button"
+          class="btn btn-primary">Back</button>
+      </div>
+    </div>
+  </div>

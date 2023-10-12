@@ -1,0 +1,79 @@
+<!-- <p>addprescription works!</p> -->
+<!-- <app-appointmentlist></app-appointmentlist> -->
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row " style="margin-top: 20px;">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="container text-center">
+                            <img src="../../../assets/h.png" alt="" height="100px" width="100px">
+                        </div>
+
+                        <h3 class="text-center">
+                            Add Prescription
+                        </h3>
+                        <!-- {{addprescriptionandfees|json}}  -->
+                        <form #myForm="ngForm" (ngSubmit)="formSubmit()">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"> Appointment Id : &nbsp;</label>
+                                <label type="text" id="id" #id="ngModel"
+                                    [(ngModel)]="addprescriptionandfees.id"  aria-describedby="emailHelp" name="id"
+                                    placeholder="Enter id" required>{{addprescriptionandfees.id}}</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Patient Name : &nbsp;</label>
+                                <label style="margin-top: 10px;" type="text" id="id" #id="ngModel"
+                                    [(ngModel)]="appointment.patientname" aria-describedby="emailHelp" name="patientname"
+                                    placeholder="Enter id" required>{{appointment.patientname}}</label>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="margin-top: 10px;" for="exampleInputEmail1">Health Issue : &nbsp;</label>
+                                <label type="text" id="id" #id="ngModel"
+                                    [(ngModel)]="appointment.healthIssue"  name="healthIssue"
+                                     required>{{appointment.healthIssue}}</label>
+                            </div>
+                                <!-- <h1>{{a}}</h1> -->
+                            <div class="form-group">
+                                <label style="margin-top: 10px;" for="exampleInputEmail1">Prescription</label>
+                                <textarea type="text" class="form-control" id="prescription"
+                                    [(ngModel)]="addprescriptionandfees.prescription" #prescription="ngModel"
+                                    name="prescription" aria-describedby="emailHelp" placeholder="prescription"
+                                    required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label style="margin-top: 10px;" for="exampleInputEmail1">Note</label>
+                                <textarea type="text" class="form-control" id="prescription"
+                                    [(ngModel)]="addprescriptionandfees.note" #note="ngModel"
+                                    name="note" aria-describedby="emailHelp" placeholder="note"
+                                    required></textarea>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Charges</label>
+                                <input type="number" class="form-control" id="charges"
+                                    [(ngModel)]="addprescriptionandfees.charges" #charges="ngModel" name="charges"
+                                    placeholder="Enter fees" required>
+                            </div>
+
+
+                            <div class="container text-center" style="margin-top: 10px;">
+                                <button [disabled]="!myForm.form.valid" type="submit"
+                                    class="btn btn-primary">Add</button>
+                                <button class="ml10" style="margin-left: 20px;" type="button" class="btn btn-primary"
+                                    (click)="myForm.resetForm()">Reset</button>
+                                <button [routerLink]="'/appointmentlist'" class="ml10" style="margin-left: 20px;"
+                                    type="button" class="btn btn-primary">Back</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

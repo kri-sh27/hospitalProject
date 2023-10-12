@@ -1,0 +1,191 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row " style="margin-top: 20px;">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="container text-center">
+              <img src="../../../assets/h.png" alt="" height="100px" width="100px">
+            </div>
+            <h3 class="text-center">
+              Register here
+            </h3>
+            <!-- {{user | json}} -->
+            <form #myForm="ngForm" (ngSubmit)="formSubmit()">
+              <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" #username="ngModel" minlength="3" maxlength="25" [(ngModel)]="user.username"
+                  name="username" class="form-control" id="username" aria-describedby="emailHelp"
+                  placeholder="Enter Username" required>
+                <div class="alert alert-danger" role="alert"
+                  *ngIf="username.invalid && (username.dirty || username.touched)">
+                  Username is a required field it shuold be as user(Number)
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" #name="ngModel" minlength="3" maxlength="25" [(ngModel)]="user.fullName"
+                  name="fullName" class="form-control" id="Username" aria-describedby="emailHelp"
+                  placeholder="Enter FullName" required>
+                <div class="alert alert-danger" role="alert" *ngIf="name.invalid && (name.dirty || name.touched)">
+                  Username is a required field
+                </div>
+                <div class="alert alert-danger" role="alert"
+                  *ngIf="name.errors?.['minlength']||name.errors?.['maxlength']">
+                  minlength {{name.errors?.['minlength']?.['requiredLength']}} is required and maxlength 25 is required
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" #email="ngModel" [(ngModel)]="user.email" name="email" class="form-control"
+                  id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                <div class="alert alert-danger" role="alert" *ngIf="email.invalid && (email.dirty || email.touched)">
+                  Valid Email is a required field
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Date Of Birth</label>
+                <input type="date" #DOB="ngModel" [(ngModel)]="user.dob" name="dob" class="form-control"
+                  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter dob" required>
+                <div class="alert alert-danger" role="alert" *ngIf="DOB.invalid && (DOB.dirty || DOB.touched)">
+                  DOB is a required field
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Marital Status</label>
+                <ul>
+                  <li>
+                    <div class="form-check">
+                      <input class="form-check-input" [(ngModel)]="user.maritalstatus" type="radio" name="maritalstatus"
+                        value="married" (change)="onChange($event)" id="flexRadioDefault2" />
+                      <label>Married</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-check">
+                      <input class="form-check-input" #maritalstatus="ngModel" [(ngModel)]="user.maritalstatus"
+                        type="radio" name="maritalstatus" value="unmarried" (change)="onChange($event)"
+                        id="flexRadioDefault2" />
+                      <label>Unmarried</label>
+                    </div>
+                  </li>
+                </ul>
+                <div class="alert alert-danger" role="alert"
+                  *ngIf="maritalstatus.invalid && (maritalstatus.dirty || maritalstatus.touched)">
+                  Maretial is a required field
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1"> Gender</label>
+                <div class="alert alert-danger" role="alert" *ngIf="Gender.invalid && (Gender.dirty || Gender.touched)">
+                  Gender is a required field
+                </div>
+                <ul>
+                  <li>
+                    <div class="form-check">
+                      <input class="form-check-input" #Gender="ngModel" [(ngModel)]="user.gender" type="radio"
+                        name="gender" value="male" (change)="onChange($event)" id="flexRadioDefault2" />
+                      <label>male</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-check">
+                      <input class="form-check-input" #Gender="ngModel" [(ngModel)]="user.gender" type="radio"
+                        name="gender" value="female" (change)="onChange($event)" id="flexRadioDefault2" />
+                      <label>female</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-check">
+                      <input class="form-check-input" [(ngModel)]="user.gender" #Gender="ngModel" type="radio"
+                        name="gender" value="other" (change)="onChange($event)" id="flexRadioDefault2" />
+                      <label>other</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1"> Address</label>
+                <input type="text" #Address="ngModel" [(ngModel)]="user.address" name="address" class="form-control"
+                  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter address" required>
+                <div class="alert alert-danger" role="alert"
+                  *ngIf="Address.invalid && (Address.dirty || Address.touched)">
+                  <Address></Address> Address is a required field
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Phone Number</label>
+                <input type="number" #phone="ngModel" [(ngModel)]="user.phone" name="phone" class="form-control"
+                  id="exampleInputPassword1" placeholder="Phone number" required>
+                <div class="alert alert-danger" role="alert" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                  Phone Number is a required field
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" #password="ngModel" [(ngModel)]="user.password" name="password"
+                  class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                <div class="alert alert-danger" role="alert"
+                  *ngIf="password.invalid && (password.dirty || password.touched)">
+                  Password is a required field
+                </div>
+              </div>
+              <div class="container text-center" style="margin-top: 10px;">
+                <button  [disabled]="!myForm.form.valid" type="submit" class="btn btn-primary">Register</button>
+                <button style="margin-left: 20px;" type="button" class="btn btn-primary"
+                  (click)="myForm.resetForm()">clear</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="register-form">
+                    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" novalidate>
+                      <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" name="fullName" [(ngModel)]="form.FullName" required #fullName="ngModel"
+                          [ngClass]="{ 'is-invalid': f.submitted && fullName.errors }" />
+                        <div *ngIf="f.submitted && fullName.errors" class="invalid-feedback">
+                          <div *ngIf="fullName.errors['required']">Fullname is required</div>
+                        </div>
+                      </div>
+                  
+                  
+                  
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #uemail="ngModel"
+                          [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
+                        <div *ngIf="f.submitted && email.errors" class="invalid-feedback">
+                          <div *ngIf="email.errors['required']">Email is required</div>
+                          <div *ngIf="email.errors['email']">Email is invalid</div>
+                        </div>
+                      </div>
+                  
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
+                          maxlength="40" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
+                        <div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+                          <div *ngIf="password.errors['required']">Password is required</div>
+                          <div *ngIf="password.errors['minlength']">
+                            Password must be at least 6 characters
+                          </div>
+                          <div *ngIf="password.errors['maxlength']">
+                            Username must not exceed 40 characters
+                          </div>
+                        </div>
+                      </div>
+                  
+                  
+                  
+                  
+                  
+                      -->
+<!--</div>
+                    </form>
+                  </div> -->

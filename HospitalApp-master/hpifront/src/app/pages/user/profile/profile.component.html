@@ -1,0 +1,67 @@
+<div class=" container-fluid page">
+  <div class="col-md-10 offset-md-1">
+    <div class="page__content shadow p-3 position-relative">
+      <div class="page__ content-data postion-absolute text-center">
+        All Appointment
+      </div>
+      <div class="mt-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Appointment ID</th>
+              <!-- <th>PatientName</th> -->
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Health Issue</th>
+              <th>Prescription</th>
+              <th>Note</th>
+              <th>Fees</th>
+              <th>Payment Status</th>
+              <th>Patient Status</th>
+
+
+              <!-- <th>Edit</th>
+                          <th>Delete</th> -->
+            </tr>
+            <tr input type="text">
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr *ngFor="let apt of profilelist | paginate:{id:'listing_pagination',itemsPerPage:3,currentPage:page,totalItems:total}">
+              <!-- <div *ngIf="apt.status!=true"> -->
+              <td >{{apt.id}}</td>
+              <!-- <td *ngIf="apt.status!=true">{{apt.patientname}}</td> -->
+              <td >{{apt.nameOfDoctor}}</td>
+              <td >{{apt.appointmentDate }}</td>
+              <td >{{apt.appointmentStartTime}}</td>
+              <td >{{apt.appointmentEndTime}}</td>
+              <td >{{apt.healthIssue}}</td>
+
+              <td >{{apt.prescription}}</td>
+              <td>{{apt.note}}</td>
+              <td >{{apt.charges}}</td>
+              <!-- <td *ngIf="apt.status!=true">{{apt.status}}</td> -->
+              <td *ngIf="apt.status==false"> Pending</td>
+              <td *ngIf="apt.status==false">Treatment in progress</td>
+              <td *ngIf="apt.status==true">Payment Done </td>
+              <td *ngIf="apt.status==true"> Discharged</td>
+              <!-- <td *ngIf="apt.status!=true"><button class="btn btn-primary"
+                  (click)="status(apt.id, apt.status=true)">pay</button></td> -->
+              <!-- </div> -->
+
+
+              <!-- --<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                              (click)="edit(doctor)">Edit</button></td>
+                          <td><button type="button" class="btn btn-danger" (click)="deleteDoctor(doctor)">Delete</button></td> -->
+              <!-- </tr> -->
+          </tbody>
+        </table>
+        <pagination-controls id="listing_pagination"  (pageChange)="page=$event">
+        </pagination-controls>
+        <button [routerLink]="'/user-dashboard'" class="ml10" style="margin-left: 20px;" type="button"
+          class="btn btn-primary">Back</button>
+      </div>
+    </div>
+  </div>

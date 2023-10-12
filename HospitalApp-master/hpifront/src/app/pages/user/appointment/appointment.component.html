@@ -1,0 +1,129 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row " style="margin-top: 20px;">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="container text-center">
+              <img src="../../../assets/tp.jpeg" alt="" height="100px" width="100px">
+            </div>
+
+            <h3 class="text-center">
+              Book Appointment here!
+            </h3>
+            <!-- {{appointment | json}} -->
+            <form #myForm="ngForm" (ngSubmit)="formSubmit()">
+
+              <div class="form-group">
+                <label for="name">Patient Name:- &nbsp;</label>
+                <label #name="ngModel"  [(ngModel)]="appointment.patientname"
+                  name="fullName"  id="patientname" 
+                  placeholder="Enter Name" required>{{ appointment.patientname}}</label>
+              </div>
+
+              <div class="form-group">
+                <label for="name"> Patient ID :- &nbsp;</label>
+                <label style="margin-top: 10px;" type="text" #id="ngModel" [(ngModel)]="appointment.id"
+                  name="fullName"  id="Username" aria-describedby="emailHelp" placeholder="Enter id"
+                  required>{{appointment.id}}</label>
+              </div>
+
+              <div class="form-group">
+                <label style="margin-top: 10px;" for="branch">Doctor Name</label>
+                <select [(ngModel)]="appointment.nameOfDoctor" (change)="getspeciality()" id="branch" name="branch"
+                  ngModel class="form-control">
+                  <option *ngFor="let d of list" [value]="d.fullName">
+                    {{d.fullName}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputPassword1">Speciality</label>
+                <input type="text" #speciality="ngModel" [(ngModel)]="appointment.speciality" name="speciality"
+                  class="form-control" id="exampleInputPassword1" placeholder="Speciality" required>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Date Of Appointment</label>
+                <input type="date" #DOB="ngModel" [(ngModel)]="appointment.appointmentDate" name="ob"
+                  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" (change)="getStarttime()"
+                  placeholder="Enter Date" required>
+                <div class="alert alert-danger" role="alert" *ngIf="DOB.invalid && (DOB.dirty || DOB.touched)">
+                  Date is a required field
+                </div>
+              </div>
+
+              <!-- <div class="form-group">                  <label for="exampleInputEmail1">Start time</label>
+                  <input type="time" step="2" #maritalstatus="ngModel" 
+                          [(ngModel)]="appointment.appointmentStartTime" 
+                          name="maritalstatus"
+                          class="form-control" 
+                          id="appt-time" aria-describedby="emailHelp"
+                          placeholder="Enter Start time" required>
+                    <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="maritalstatus.invalid && (maritalstatus.dirty || maritalstatus.touched)">
+                    Start time is a required field
+                  </div>
+                </div> -->
+              <div class="form-group">
+                <label for="branch">Start Time</label>
+                <select [(ngModel)]="appointment.appointmentStartTime" (change)="getendtime()" id="branch"
+                  name="starttime" ngModel class="form-control">
+                  <option *ngFor="let t of starttime; index as i;" [value]=t>
+                    {{t}}
+                  </option>
+                </select>
+              </div>
+
+              <!-- <div class="form-group">
+                  <label for="exampleInputEmail1"> End time</label>
+                  <input type="time" step="2" #Gender="ngModel"  
+                          [(ngModel)]="appointment.appointmentEndTime" 
+                          name="gender" class="form-control"
+                          id="exampleInputEmail1" aria-describedby="emailHelp" 
+                          placeholder="Enter End time" required>
+                    <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="Gender.invalid && (Gender.dirty || Gender.touched)">
+                    End time is a required field
+                  </div> 
+                </div> -->
+              <div class="form-group">
+                <label for="branch">End Time</label>
+                <input type="text" #appointmentEndTime="ngModel" [(ngModel)]="appointment.appointmentEndTime"
+                  name="appointmentEndTime" class="form-control" id="exampleInputPassword1" required>
+                <div class="alert alert-danger" role="alert"
+                  *ngIf="appointmentEndTime.invalid && (appointmentEndTime.dirty || appointmentEndTime.touched)">
+                  End time is a required field
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="name">Health Issue</label>
+                <textarea type="textarea" #healthIssue="ngModel" 
+                  [(ngModel)]="appointment.healthIssue" ngModel name="healthIssue" class="form-control" id="healthIssue"
+                  aria-describedby="emailHelp" placeholder="Enter health issue" required></textarea>
+                <div class="alert alert-danger" role="alert"
+                  *ngIf="healthIssue.invalid && (healthIssue.dirty || healthIssue.touched)">
+                  Mention health issue is a required field
+                </div>
+              </div>
+
+              <div class="container text-center" style="margin-top: 10px;">
+                <button [disabled]="!myForm.form.valid" type="submit" class="btn btn-primary">Book</button>
+                <button style="margin-left: 20px;" type="button" class="btn btn-primary"
+                  (click)="myForm.resetForm()">clear</button>
+                <button [routerLink]="'/user-dashboard'" class="ml10" style="margin-left: 20px;" type="button"
+                  class="btn btn-primary">Back</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
